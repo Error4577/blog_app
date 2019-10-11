@@ -1,0 +1,23 @@
+<div>
+  <% @posts.each do |post| %>
+    <div class="card horizonal">
+      <div class="card-stacked">
+        <div class="card-content">
+          <p><%= post.title %></p>
+          <%= simple_format(post.text) %>
+          <a href="">
+            <span>投稿者 : </span><%= post.user.nickname %>
+          </a>
+        </div>
+        <div class="card-action">
+          <%= link_to '詳細', "/posts/#{post.id}", method: :get, class: "waves-effect waves-light btn-small" %>
+          <% if user_signed_in? && current_user.id == post.user_id %>
+            <%= link_to '編集', "/posts/#{post.id}/edit", method: :get, class: "waves-effect waves-light btn-small" %>
+            <%= link_to '削除', "/posts/#{post.id}", method: :delete, class: "waves-effect waves-light btn-small" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <%= paginate(@posts) %>
+</div>

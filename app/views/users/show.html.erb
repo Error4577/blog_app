@@ -1,0 +1,16 @@
+<div>
+  <p><%= @nickname %>さんの投稿一覧</p>
+  <% @posts.each do |post| %>
+    <div class="card horizonal">
+      <div class="card-stacked">
+        <div class="card-content">
+          <%= simple_format(post.text) %>
+          <span class="name"><%= post.title %></span>
+        </div>
+        <div class="card-action">
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <%= paginate(@posts) %>
+</div>

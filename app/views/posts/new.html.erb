@@ -1,0 +1,13 @@
+<div>
+  <%= form_with url: posts_path, local: true do |f| %>
+    <%= f.label :title %><br />
+    <%= f.text_field :title, placeholder: "タイトル", id: :post_title, class: "input-field" %>
+
+    <%= f.label :text %><br />
+    <%= f.text_area :text, placeholder: "本文", id: :post_text, class: "materialize-textarea" %>
+
+    <%= button_tag type: "submit", class: "btn waves-effect waves-light" do %>
+      投稿する<i class="material-icons right"></i>
+    <% end %>
+  <% end %>
+</div>
